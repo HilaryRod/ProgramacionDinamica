@@ -13,13 +13,23 @@ bool ganador();//declaracion para que sea falso o verdadero si gano o no
 bool empate(); //funcion si hay empate
 void cambiarTurno();
 void jugar();
+void reiniciarTablero(); //funcion para reiniciar tablero o se limpiarlo
 //Funcion principal
 int main() {
     cout << "Ingresa el nombre del primer jugador (X): ";
     cin >> jugador1;
     cout << "Ingresa el nombre del segundo jugador (O): ";
     cin >> jugador2;
-    jugar(); // Llamada a la función que contiene toda la lógica del juego
+    char jugarOtraVez = 'S';
+    do{
+        reiniciarTablero(); //asegurarnos de que este limpio
+        jugar(); // Llamada a la función que contiene toda la lógica del juego
+        cout << "\n¿Desean jugar otra partida? (S/N): ";
+        cin >> jugarOtraVez;
+        jugarOtraVez = toupper(jugarOtraVez); // Para aceptar s/S
+    } while (jugarOtraVez == 'S');
+    
+    cout << "Gracias por jugar. ¡Hasta luego!\n";
     return 0;
 }
 
@@ -49,7 +59,7 @@ void jugar() {
             cout << "Entrada invalida, solo puedes poner numeros. \n";
             continue;
         }
-        
+
         movimiento = stoi(entrada); //para convertir a int la entrada de el usuario
         // Validar numero escogido de movimiento, si tiene alguna de estas cosas nos va a pedir ingresar otra posicion
         if ( movimiento < 1 || movimiento > 9 || tablero[movimiento - 1] == 'X' || tablero[movimiento - 1] == 'O' ) {
