@@ -28,9 +28,17 @@ int main() {
         cin >> jugarOtraVez;
         jugarOtraVez = toupper(jugarOtraVez); // Para aceptar s/S
     } while (jugarOtraVez == 'S');
-    
+
     cout << "Gracias por jugar. ¡Hasta luego!\n";
     return 0;
+}
+// Función para reiniciar el tablero y el turno
+void reiniciarTablero() {
+    char inicial = '1'; //para que lo vuelva a transformar a numeros
+    for(int i = 0; i < 9; i++) {
+        tablero[i] = inicial++;
+    }
+    turno = 'X';
 }
 
 //Funcion que va a ir ejecutando el juego
