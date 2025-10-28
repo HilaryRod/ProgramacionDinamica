@@ -11,7 +11,8 @@ char tablero[9] = {'1','2','3','4','5','6','7','8','9'}; // Tablero para jugar 9
 void estructuragato();
 bool ganador();//declaracion para que sea falso o verdadero si gano o no
 bool empate(); //funcion si hay empate
-
+bool cambiarTurno();
+void jugar();
 //Funcion principal
 int main() {
     cout << "Ingresa el nombre del primer jugador (X): ";
@@ -20,6 +21,7 @@ int main() {
     cin >> jugador2;
    
 }
+//Funcion que va a ir ejecutando el juego
 
 void estructuragato(){
      cout << "\n  " << tablero[0] << " | " << tablero[1] << " | " << tablero[2] << endl;
@@ -55,4 +57,13 @@ bool empate() {
     }
     //retorna verdadero si realmente todo esta lleno con X o O 
     return true;
+}
+
+// Función para cambiar el turno
+void cambiarTurno() {
+    if (turno == 'X') { //si turno esta en X
+        turno = 'O'; //Ahora es turno del O 
+    } else { //Si no estaba en X
+        turno = 'X'; //Ahora es turno de X
+    }
 }
