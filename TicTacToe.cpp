@@ -10,6 +10,7 @@ char tablero[9] = {'1','2','3','4','5','6','7','8','9'}; // Tablero para jugar 9
 //Declaracion de mis funciones
 void estructuragato();
 bool ganador();//declaracion para que sea falso o verdadero si gano o no
+bool empate(); //funcion si hay empate
 
 //Funcion principal
 int main() {
@@ -36,10 +37,22 @@ bool ganador() {
     };
 
     for (auto &linea : combinaciones) { //para cada linea en combinacion, bucle
-
+       //es como decir la casilla en el indice linea[] pertenece al jugador que esta en turno
         if (tablero[linea[0]] == turno && tablero[linea[1]] == turno && tablero[linea[2]] == turno) { //verifica si las 3 posiciones estan ocupadas por el simbolo del jugador
             return true; //si es cierto el jugador ya gano y por eso devuelve true
         }
     }
     return false; //si no retorna falso 
+}
+
+// Función para verificar si el tablero está lleno y no ha habido ganador
+bool empate() {
+    for (int i = 0; i < 9; i++) { //recorre el tablero con el for
+        //va verificando si hay algun espacio que no tenga X u O
+        if (tablero[i] != 'X' && tablero[i] != 'O') 
+        //retorna falso si aun hay un espacio sin X u O
+            return false;
+    }
+    //retorna verdadero si realmente todo esta lleno con X o O 
+    return true;
 }
