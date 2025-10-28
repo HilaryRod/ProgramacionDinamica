@@ -11,7 +11,7 @@ char tablero[9] = {'1','2','3','4','5','6','7','8','9'}; // Tablero para jugar 9
 void estructuragato();
 bool ganador();//declaracion para que sea falso o verdadero si gano o no
 bool empate(); //funcion si hay empate
-bool cambiarTurno();
+void cambiarTurno();
 void jugar();
 //Funcion principal
 int main() {
