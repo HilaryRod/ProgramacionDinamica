@@ -19,10 +19,69 @@ int main() {
     cin >> jugador1;
     cout << "Ingresa el nombre del segundo jugador (O): ";
     cin >> jugador2;
-   
+    jugar(); // Llamada a la función que contiene toda la lógica del juego
+    return 0;
 }
-//Funcion que va a ir ejecutando el juego
 
+//Funcion que va a ir ejecutando el juego
+void jugar() {
+    string entrada;
+    int movimiento; //declaro la variable para los movimientos
+    bool juegoTerminado = false; //inicializo mi variable en falso
+
+    do {
+        estructuragato(); //muestro el gato
+        // Imprime de quien es el turno, si el turno estaba en x muestra el nombre del jugador 2 y viceversa
+        cout << "\nTurno de " << (turno == 'X' ? jugador1 : jugador2) << " (" << turno << ")" << endl;
+        //pide que el usuario digite un numero donde quiere colocar su X o O
+        cout << "Elige una posicion (solo numero del 1 al 9): ";
+        //leemos el num de digito y lo guardamos en la variable movimiento
+        cin >> entrada;
+        //para verificar que sean solo numeros los ingresados
+        bool esNumero = true;
+        for (char c : entrada) { //se recorre la entrada por caracteres
+            if (!isdigit(c)) {  // Si algún carácter no es número
+                esNumero = false; //se pone que es falso que sea numero
+                break;
+            }
+        }
+        if(!esNumero){
+            cout << "Entrada invalida, solo puedes poner numeros. \n";
+            continue;
+        }
+        
+        movimiento = stoi(entrada); //para convertir a int la entrada de el usuario
+        // Validar numero escogido de movimiento, si tiene alguna de estas cosas nos va a pedir ingresar otra posicion
+        if ( movimiento < 1 || movimiento > 9 || tablero[movimiento - 1] == 'X' || tablero[movimiento - 1] == 'O' ) {
+            cout << "Movimiento invalido, intenta de nuevo.\n";
+            continue;
+        }
+        // Marcar el movimiento en el tablero, se usa el menos 1 porque inicia de 0
+        tablero[movimiento - 1] = turno; //se marca con X o O dependiendo el turno
+
+        // Comprobar si hay ganador
+        if (ganador()) {
+            estructuragato(); //imprimimos el tablero
+            //mostramos en consola que gano
+            cout << "\n ¡Felicidades " << (turno == 'X' ? jugador1 : jugador2) << "! Has ganado. \n"; 
+            //se termina el juego
+            juegoTerminado = true;
+        } 
+        //por si llega a existir empate
+        else if (empate()) {
+            estructuragato();
+            cout << "\n ¡Empate! No hay más movimientos posibles.\n";
+            juegoTerminado = true;
+        } 
+        else {
+            //llamamos a nuestra funcion que cambia el turno
+            cambiarTurno(); // Cambiar turno
+        }
+
+    } while (!juegoTerminado); //mientras el juego aun no termine se seguira repitiendo
+}
+
+//funcion para imprimir en consola el gato con estructura
 void estructuragato(){
      cout << "\n  " << tablero[0] << " | " << tablero[1] << " | " << tablero[2] << endl;
      cout << " ---|---|---" << endl;
