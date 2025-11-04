@@ -25,7 +25,30 @@ void mostrarTablero(char tablero[filas][columnas]) {
         cout << "\n  ---------------\n"; //linea que va separar
     }
 }
+
+// Muestra el menú principal del juego
+void mostrarMenu() {
+    cout << "\n=== MENU PRINCIPAL ===\n";
+    cout << "1. Jugar (2 jugadores)\n";
+    cout << "2. Jugar contra computadora\n";
+    cout << "3. Salir\n";
+    cout << "Elige una opción: ";
+}
 // Punto de entrada del programa
 int main() {
-    
-}
+    //declaraciones variables
+    int opcion;
+    bool salir = false;
+
+    do { //muestro el menu de opciones
+        mostrarMenu();
+        cin >> opcion; //leo la opcion ingresada por usuario
+
+        // Validación de entrada
+        if (cin.fail()) { //si no es numero 
+            cin.clear(); //limpio 
+            cin.ignore(1000, '\n');
+            cout << "Opcion invalida. Intenta nuevamente.\n";
+            continue; //vuelve a mostrar el menu 
+        }
+}}
