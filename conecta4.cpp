@@ -78,6 +78,14 @@ bool hayGanador(char tablero[filas][columnas], char ficha) {
     return false; // No se encontró combinación ganadora
 }
 
+// Verifica si el tablero está completamente lleno
+bool tableroLleno(char tablero[filas][columnas]) {
+    for (int k = 0; k < columnas; k++) {
+        if (tablero[0][k] == ' ') return false; // Si hay espacio en la fila superior, aún hay lugar
+    }
+    return true;
+}
+
 void jugarDosJugadores() {
      string jugador1, jugador2;
     cout << "\n=== MODO 2 JUGADORES ===\n";
@@ -130,9 +138,25 @@ void jugarDosJugadores() {
                 jugadorActual = (jugadorActual == 'X') ? 'O' : 'X';
             }
         }
+        //pregunta si quieren jugar otra ronda
+        char opcion;
+        bool respuestaValida = false;
+        do {
+            cout << "\n¿Desean jugar otra vez entre los mismos jugadores? (s/n): ";
+            cin >> opcion;
 
-        }
-}}
+            if (opcion == 's' || opcion == 'S') {
+                repetir = true;
+                respuestaValida = true;
+            } else if (opcion == 'n' || opcion == 'N') {
+                repetir = false;
+                respuestaValida = true;
+            } else {
+                cout << "Opcion invalida. Escribe 's' para sí o 'n' para no.\n";
+            }
+        } while (!respuestaValida);
+    }
+}
 
 void jugarContraMaquina(){
     cout << "Aun no esta listo, prueba otra opcion ";
