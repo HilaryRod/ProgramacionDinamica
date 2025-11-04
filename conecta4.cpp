@@ -25,3 +25,7 @@ void mostrarTablero(char tablero[filas][columnas]) {
         cout << "\n  ---------------\n"; //linea que va separar
     }
 }
+// Punto de entrada del programa
+int main() {
+    
+}
