@@ -8,7 +8,8 @@
 
 Lista de proyectos desarrollados durante el curso.:
 
-- [ ] Proyecto 1: *TIC TAC TOE*  
+- [X] Proyecto 1: *TIC TAC TOE*  
+- [X] Proyecto 2: *CONECTA 4*  
 
 
 ---
