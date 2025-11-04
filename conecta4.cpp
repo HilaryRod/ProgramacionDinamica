@@ -25,6 +25,10 @@ void mostrarTablero(char tablero[filas][columnas]) {
         cout << "\n  ---------------\n"; //linea que va separar
     }
 }
+void jugarDosJugadores() {}
+void jugarContraMaquina(){
+    cout << "Aun no esta listo, prueba otra opcion ";
+}
 
 // Muestra el menú principal del juego
 void mostrarMenu() {
@@ -51,4 +55,25 @@ int main() {
             cout << "Opcion invalida. Intenta nuevamente.\n";
             continue; //vuelve a mostrar el menu 
         }
-}}
+          switch (opcion) {
+            case 1:
+                jugarDosJugadores();
+                break;
+
+            case 2:
+                jugarContraMaquina();
+                break;
+
+            case 3:
+                cout << "\nSaliendo del juego... ¡Gracias por jugar!\n";
+                salir = true;
+                break;
+
+            default:
+                cout << "Opcion invalida. Intenta nuevamente.\n";
+        }
+
+    } while (!salir);
+
+    return 0;
+}
