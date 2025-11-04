@@ -25,7 +25,39 @@ void mostrarTablero(char tablero[filas][columnas]) {
         cout << "\n  ---------------\n"; //linea que va separar
     }
 }
-void jugarDosJugadores() {}
+void jugarDosJugadores() {
+     string jugador1, jugador2;
+    cout << "\n=== MODO 2 JUGADORES ===\n";
+    cout << "Nombre del jugador 1 (X): ";
+    cin >> jugador1;
+    cout << "Nombre del jugador 2 (O): ";
+    cin >> jugador2;
+
+    bool repetir = true;
+
+    while (repetir) {
+        char tablero[filas][columnas];
+        inicializarTablero(tablero);
+        char jugadorActual = 'X';
+        bool juegoTerminado = false;
+
+        while (!juegoTerminado) {
+            mostrarTablero(tablero);
+            string nombreActual = (jugadorActual == 'X') ? jugador1 : jugador2;
+
+            int columna;
+            cout << "\nTurno de " << nombreActual << " (" << jugadorActual << ")"
+                 << ". Elige columna (1-7): ";
+            cin >> columna;
+
+            if (cin.fail() || columna < 1 || columna > 7) {
+                cin.clear();
+                cin.ignore(1000, '\n');
+                cout << "Entrada invalida. Intenta de nuevo.\n";
+                continue;
+            }}
+}
+
 void jugarContraMaquina(){
     cout << "Aun no esta listo, prueba otra opcion ";
 }
